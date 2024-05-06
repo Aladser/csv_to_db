@@ -3,7 +3,7 @@ import csv
 
 class CSVLoader:
     @staticmethod
-    def load(file):
+    def parse(file):
         with open(file, newline='') as file:
             header = next(csv.reader(file))
             header_str = ', '.join(header)
