@@ -1,2 +1,2 @@
-from src.csv_loader import CSVLoader
 from src.postgres_date_converter import PostgresDateConverter
+from src.csv_to_db_parser import CSVToDBParser
