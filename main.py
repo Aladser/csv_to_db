@@ -16,13 +16,12 @@ for order in orders_dict['data']:
 
 
 # БД соединение
-conn_params = {
-    'host': 'localhost',
-    'port': '5432',
-    'dbname': 'pydb171',
-    'user': 'postgres',
-    'password': 'Database_1821'
-}
+conn_params = {}
+with open('env', 'r') as file:
+    for line in file:
+        key, value = line.split(':')
+        value = value.replace('\n', '')
+        conn_params[key] = value
 conn = psycopg2.connect(**conn_params)
 cursor = conn.cursor()
 
