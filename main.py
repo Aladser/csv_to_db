@@ -1,7 +1,10 @@
+import os.path
+
 import psycopg2
 from src import PostgresDateConverter, CSVToDBParser
 
 SCHEMA_NAME = 'public'
+CONFIG_FILENAME = 'env'
 
 # CSV-файлы -> словарь
 customers_dict = CSVToDBParser.parse_csv('data/customers.csv')
@@ -17,7 +20,7 @@ for order in orders_dict['data']:
 
 # БД соединение
 conn_params = {}
-with open('env', 'r') as file:
+with open(CONFIG_FILENAME, 'r') as file:
     for line in file:
         key, value = line.split(':')
         value = value.replace('\n', '')
